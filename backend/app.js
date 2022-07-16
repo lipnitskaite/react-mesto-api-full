@@ -18,7 +18,7 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-app.use(checkCors());
+app.use(checkCors);
 app.use(cookieParser());
 
 app.use(bodyParser.json());
