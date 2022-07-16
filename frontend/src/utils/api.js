@@ -13,6 +13,8 @@ class Api {
 
   getUserInfoApi() {
     return fetch(`${this._address}/users/me`, {
+      method: 'GET',
+      credentials: 'include',
       headers: {
         authorization: this._token
       }
@@ -23,6 +25,7 @@ class Api {
   updateUserInfo(data) {
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
@@ -37,6 +40,8 @@ class Api {
 
   getCards() {
     return fetch(`${this._address}/cards`, {
+      method: 'GET',
+      credentials: 'include',
       headers: {
         authorization: this._token
       }
@@ -47,6 +52,7 @@ class Api {
   addCard(data) {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
@@ -62,6 +68,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         authorization: this._token
       }
@@ -72,6 +79,7 @@ class Api {
   updateUserAvatar(avatarLink) {
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
@@ -86,6 +94,7 @@ class Api {
   changeLikeCardStatus(id, isLiked) {
     return fetch(`${this._address}/cards/${id}/likes`, {
       method: isLiked ? 'PUT' : 'DELETE',
+      credentials: 'include',
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json'
@@ -96,11 +105,6 @@ class Api {
 }
 
 export const api = new Api({
-  address: 'https://mesto.nomoreparties.co/v1/cohort-35',
-  token: '5ac1d86f-37b5-4f50-b37e-b1e98dd53da9'
-});
-
-export const authApi = new Api({
-  address: 'https://auth.nomoreparties.co',
+  address: 'http://api.mesto.lipnitskaite.nomoredomains.xyz',
   token: `Bearer ${localStorage.getItem('token')}`,
 });

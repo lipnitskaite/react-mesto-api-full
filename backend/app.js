@@ -6,6 +6,7 @@ const { errors } = require('celebrate');
 
 const { createUserValidation, loginUserValidation } = require('./middlewares/validation');
 const { auth } = require('./middlewares/auth');
+const { checkCors } = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { routes } = require('./routes/routes');
@@ -18,6 +19,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cookieParser());
+app.use(checkCors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
