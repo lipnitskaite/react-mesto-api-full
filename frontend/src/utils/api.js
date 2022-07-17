@@ -1,10 +1,14 @@
-class Api {
-  constructor({address, token}) {
+export class Api {
+  constructor({address, headers, notAuthorizedHandler}) {
     this._address = address;
-    this._token = token;
+    this._headers = headers;
+    this._notAuthorizedHandler = notAuthorizedHandler;
   }
 
   _handleResponse = (res) => {
+    if (res.status === 401) {
+      this._notAuthorizedHandler();
+    }
     if (res.ok) {
       return res.json()
     } 
@@ -15,9 +19,6 @@ class Api {
     return fetch(`${this._address}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      headers: {
-        authorization: this._token
-      }
     })
     .then(this._handleResponse);
   }
@@ -26,10 +27,7 @@ class Api {
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -42,9 +40,6 @@ class Api {
     return fetch(`${this._address}/cards`, {
       method: 'GET',
       credentials: 'include',
-      headers: {
-        authorization: this._token
-      }
     })
     .then(this._handleResponse);
   }
@@ -53,10 +48,7 @@ class Api {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -69,9 +61,6 @@ class Api {
     return fetch(`${this._address}/cards/${id}`, {
       method: 'DELETE',
       credentials: 'include',
-      headers: {
-        authorization: this._token
-      }
     })
     .then(this._handleResponse)
   }
@@ -80,10 +69,7 @@ class Api {
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatarLink,
       })
@@ -95,16 +81,8 @@ class Api {
     return fetch(`${this._address}/cards/${id}/likes`, {
       method: isLiked ? 'PUT' : 'DELETE',
       credentials: 'include',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
     .then(this._handleResponse)
   }
 }
-
-export const api = new Api({
-  address: 'http://api.mesto.lipnitskaite.nomoredomains.xyz',
-  token: `Bearer ${localStorage.getItem('token')}`,
-});

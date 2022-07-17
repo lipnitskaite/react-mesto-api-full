@@ -10,15 +10,21 @@ import InfoTooltip from '../components/InfoTooltip';
 import EditAvatarPopup from '../components/EditAvatarPopup';
 import AddPlacePopup from '../components/AddPlacePopup';
 import ImagePopup from '../components/ImagePopup';
-import ProtectedRoute from '../components/ProtectedRoute';
-import { api } from '../utils/api';
+import { ProtectedRoute } from '../components/ProtectedRoute';
+import { Api } from '../utils/api';
 import * as auth from '../utils/auth';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
   const history = useHistory();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const api = new Api({
+    address: 'http://api.mesto.lipnitskaite.nomoredomains.xyz',
+    headers: { 'Content-Type': 'application/json' },
+    notAuthorizedHandler: () => { history.push('/sign-in'); }
+  });
+
+  const [loggedIn, setLoggedIn] = useState(true);
   const [userEmail, setUserEmail] = useState('');
   const [currentUser, setCurrentUser] = useState({});
 
@@ -35,10 +41,6 @@ function App() {
   const handleEditProfileClick = () => {setIsEditProfilePopupOpen(true)};
   const handleAddCardClick = () => {setIsAddCardPopupOpen(true)};
   const handleCardClick = (card) => {setSelectedCard(card)};
-
-  useEffect(() => {
-    tokenCheck();
-  }, [])
 
   useEffect(() => {
     if (loggedIn) {
@@ -59,12 +61,9 @@ function App() {
 
   function handleLogin(email, password) {
     return auth.authorize(email, password)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        setLoggedIn(true);
-        history.push('/');
-      }
+    .then(() => {
+      setLoggedIn(true);
+      history.push('/');
     })
     .catch(() => {
       setIsInfoTooltipOpen(true);
@@ -85,26 +84,8 @@ function App() {
     })
   }
 
-  function tokenCheck() {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      auth.getContent(token)
-      .then((res) => {
-        if (res) {
-          const userEmail = res.data.email;
-
-          setLoggedIn(true);
-          setUserEmail(userEmail);
-          history.push('/');
-        }
-      })
-      .catch((err) => console.log(err))
-    };
-  };
-
   function signOut() {
-    localStorage.removeItem('token');
+    setLoggedIn(false);
     history.push('./sign-in');
   }
 
@@ -144,7 +125,7 @@ function App() {
   };
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser.id);
     
     api.changeLikeCardStatus(card._id, !isLiked)
     .then((newCard) => {
@@ -177,7 +158,7 @@ function App() {
           <Route path="/sign-in">
             <Login handleLogin={handleLogin} />
           </Route>
-
+          
           <ProtectedRoute path="/" loggedIn={loggedIn}>
             <Main 
               onEditAvatar={handleEditAvatarClick}
