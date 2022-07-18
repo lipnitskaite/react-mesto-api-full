@@ -1,6 +1,7 @@
 const allowedCors = [
   'https://mesto.front.lipnitskaite.nomoredomains.xyz',
   'http://mesto.front.lipnitskaite.nomoredomains.xyz',
+  'http://localhost:3000',
 ];
 
 exports.checkCors = async (req, res, next) => {
