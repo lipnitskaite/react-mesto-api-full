@@ -1,6 +1,6 @@
 {
   "name": "mesto-react",
-  "homepage": "http://mesto.front.lipnitskaite.nomoredomains.xyz/",
+  "homepage": "https://mesto.front.lipnitskaite.nomoredomains.xyz/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
