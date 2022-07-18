@@ -18,7 +18,7 @@ const checkToken = (token) => {
     throw new UnauthorizedError('Необходима авторизация');
   };
 
-  return jwt.verify(token, SECRET_KEY);
+  return jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET: SECRET_KEY);
 };
 
 module.exports = { generateToken, checkToken };
