@@ -42,26 +42,25 @@ function App() {
   const handleAddCardClick = () => {setIsAddCardPopupOpen(true)};
   const handleCardClick = (card) => {setSelectedCard(card)};
 
-  useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-    }
-  }, [loggedIn])
-
-  useEffect(() => {
-    if (loggedIn) {
-      Promise.all([api.getUserInfoApi(), api.getCards()])
+  const getApiData = () => {
+    Promise.all([api.getUserInfoApi(), api.getCards()])
       .then(([userData, cards]) => {
         setCurrentUser(userData);
         setCards(cards);
       })
       .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    if (loggedIn) {
+      getApiData();
     }
   }, [loggedIn]);
 
   function handleLogin(email, password) {
     return auth.authorize(email, password)
     .then(() => {
+      getApiData();
       setLoggedIn(true);
       history.push('/');
     })
@@ -91,7 +90,6 @@ function App() {
       history.push('./sign-in');
     })
     .catch(err => console.log(err))
-    
   }
 
   const closeAllPopups = () => {
