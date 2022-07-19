@@ -40,6 +40,18 @@ export const authorize = (email, password) => {
   .then(checkResponse)
 };
 
+export const signout = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  })
+  .then(checkResponse)
+};
+
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
@@ -52,4 +64,4 @@ export const getContent = (token) => {
   })
   .then(res => res.json())
   .then(data => data)
-}; 
+};

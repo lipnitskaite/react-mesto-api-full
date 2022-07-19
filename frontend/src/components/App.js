@@ -85,8 +85,13 @@ function App() {
   }
 
   function signOut() {
-    setLoggedIn(false);
-    history.push('./sign-in');
+    return auth.signout()
+    .then(() => {
+      setLoggedIn(false);
+      history.push('./sign-in');
+    })
+    .catch(err => console.log(err))
+    
   }
 
   const closeAllPopups = () => {

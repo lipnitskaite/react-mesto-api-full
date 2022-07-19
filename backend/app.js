@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const bodyParser  = require('body-parser');
-const mongoose  = require('mongoose');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 
 const { createUserValidation, loginUserValidation } = require('./middlewares/validation');
@@ -39,29 +39,40 @@ app.post('/signin', loginUserValidation, loginUser);
 
 app.use(auth);
 
+app.get('/signout', (req, res) => {
+  res.clearCookie('jwt', {
+    maxAge: 3600000 * 24 * 7,
+    httpOnly: true,
+    sameSite: true,
+  })
+    .send({ message: 'Пользователь вышел' });
+});
+
 app.use(routes);
 
 async function main() {
   await mongoose.connect('mongodb://localhost:27017/mestodb');
 
   app.listen(PORT, () => {
+    // eslint-disable-next-line no-console
     console.log(`App listening on port ${PORT}`);
   });
-};
+}
 
 app.use(errorLogger);
 
 app.use(errors());
 
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message} = err;
+  const { statusCode = 500, message } = err;
 
   res
     .status(statusCode)
     .send({
       message: statusCode === 500
         ? 'На сервере произошла ошибка'
-        : message
+        : message,
     });
 });
 
