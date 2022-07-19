@@ -39,7 +39,6 @@ routes.get('/signout', (req, res) => {
   res.clearCookie('jwt', {
     maxAge: 3600000 * 24 * 7,
     httpOnly: true,
-    sameSite: true,
   })
     .send({ message: 'Пользователь вышел' });
 });
