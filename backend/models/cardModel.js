@@ -1,8 +1,7 @@
-const { ObjectId } = require('bson');
 const mongoose = require('mongoose');
 const regexURL = require('../helpers/constants');
 
-const urlValidation = v => regexURL.test(v);
+const urlValidation = (v) => regexURL.test(v);
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -27,7 +26,7 @@ const cardSchema = new mongoose.Schema({
   likes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
-    default: []
+    default: [],
   }],
   createdAt: {
     type: Date,
@@ -36,4 +35,3 @@ const cardSchema = new mongoose.Schema({
 });
 
 exports.Card = mongoose.model('card', cardSchema);
-

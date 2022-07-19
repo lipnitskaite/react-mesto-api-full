@@ -1,7 +1,15 @@
 const express = require('express');
+
 const usersRoutes = express.Router();
 const { updateUserValidation, updateUserAvatarValidation, userIDValidation } = require('../middlewares/validation');
-const { getUsers, doesUserExist, getUserByID, getCurrentUser, updateUser, updateUserAvatar } = require('../controllers/userController');
+const {
+  getUsers,
+  doesUserExist,
+  getUserByID,
+  getCurrentUser,
+  updateUser,
+  updateUserAvatar,
+} = require('../controllers/userController');
 
 usersRoutes.get('/', getUsers);
 

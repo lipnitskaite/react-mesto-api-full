@@ -12,15 +12,14 @@ exports.createUserValidation = celebrate({
     avatar: Joi.string()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.error('Некорректный формат ссылки');
+          return helpers.message('Некорректный формат ссылки');
         }
-          return value;
+        return value;
       }),
     email: Joi.string()
       .required()
       .email({
         minDomainSegments: 2,
-        tlds: { allow: ['ru', 'com', 'net'] }
       }),
     password: Joi.string()
       .required(),
@@ -33,7 +32,6 @@ exports.loginUserValidation = celebrate({
       .required()
       .email({
         minDomainSegments: 2,
-        tlds: { allow: ['ru', 'com', 'net'] }
       }),
     password: Joi.string()
       .required(),
@@ -56,16 +54,16 @@ exports.updateUserAvatarValidation = celebrate({
     avatar: Joi.string()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.error('Некорректный формат ссылки');
+          return helpers.message('Некорректный формат ссылки');
         }
-          return value;
+        return value;
       }),
   }),
 });
 
 exports.userIDValidation = celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().min(24).max(24).hex()
+    userId: Joi.string().length(24).hex(),
   }),
 });
 
@@ -79,15 +77,15 @@ exports.createCardValidation = celebrate({
       .required()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.error('Некорректный формат ссылки');
+          return helpers.message('Некорректный формат ссылки');
         }
-          return value;
+        return value;
       }),
   }),
 });
 
 exports.cardIDValidation = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().min(24).max(24).hex()
+    cardId: Joi.string().min(24).max(24).hex(),
   }),
 });

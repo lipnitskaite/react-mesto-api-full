@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const regexURL = require('../helpers/constants');
 
-const urlValidation = v => regexURL.test(v);
+const urlValidation = (v) => regexURL.test(v);
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -37,9 +37,8 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false
+    select: false,
   },
 });
 
 exports.User = mongoose.model('user', userSchema);
-

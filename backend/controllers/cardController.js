@@ -20,7 +20,7 @@ exports.doesCardExist = async (req, res, next) => {
     if (!cards) {
       throw new NotFoundError('Запрашиваемая карточка не найдена.');
     }
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 
@@ -34,7 +34,7 @@ exports.createCard = async (req, res, next) => {
     const newCard = await Card.create({
       name,
       link,
-      owner: req.user._id
+      owner: req.user._id,
     });
 
     res.send(newCard);
@@ -47,7 +47,7 @@ exports.likeCard = async (req, res, next) => {
   try {
     const newCard = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $addToSet: { likes: req.user._id} },
+      { $addToSet: { likes: req.user._id } },
       { new: true },
     );
 
@@ -61,28 +61,28 @@ exports.dislikeCard = async (req, res, next) => {
   try {
     const newCard = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $pull: { likes: req.user._id} },
+      { $pull: { likes: req.user._id } },
       { new: true },
     );
 
     res.send(newCard);
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 };
 
 exports.deleteCardByID = async (req, res, next) => {
   try {
-   const card = await Card.findById(req.params.cardId);
+    const card = await Card.findById(req.params.cardId);
 
-   if (req.user._id === card.owner.toString()) {
-    await Card.findByIdAndDelete(req.params.cardId);
+    if (req.user._id === card.owner.toString()) {
+      await Card.findByIdAndDelete(req.params.cardId);
 
-    res.send({ message: "Карточка удалена" });
-   } else {
-    throw new ForbiddenError('Возможно удаление только своих карточек.');
-   }
-  } catch (err)  {
+      res.send({ message: 'Карточка удалена' });
+    } else {
+      throw new ForbiddenError('Возможно удаление только своих карточек.');
+    }
+  } catch (err) {
     next(err);
   }
 };

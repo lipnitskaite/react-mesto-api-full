@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const { User } = require('../models/userModel');
 
 const NotFoundError = require('../errors/NotFoundError');
-const ValidationError = require('../errors/ValidationError');
 const DuplicateError = require('../errors/DuplicateError');
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
@@ -11,14 +10,22 @@ const SALT_ROUNDS = 10;
 
 exports.createUser = async (req, res, next) => {
   try {
-    const {name, about, avatar, email, password} = req.body;
-
-    if (!email || !password) {
-      throw new ValidationError('Укажите email или пароль');
-    };
+    const {
+      name,
+      about,
+      avatar,
+      email,
+      password,
+    } = req.body;
 
     const hash = await bcrypt.hash(password, SALT_ROUNDS);
-    const newUser = await User.create({ name, about, avatar, email, password: hash });
+    const newUser = await User.create({
+      name,
+      about,
+      avatar,
+      email,
+      password: hash,
+    });
 
     res.send({
       name: newUser.name,
@@ -28,8 +35,9 @@ exports.createUser = async (req, res, next) => {
     });
   } catch (err) {
     if (err.code === MONGO_DUPLICATE_ERROR_CODE) {
+      // eslint-disable-next-line no-ex-assign
       err = new DuplicateError('Пользователь с таким email уже зарегистрирован');
-    };
+    }
 
     next(err);
   }
@@ -41,6 +49,7 @@ exports.getUsers = async (req, res) => {
 
     res.send(users);
   } catch (err) {
+    // eslint-disable-next-line no-undef
     next(err);
   }
 };
@@ -52,7 +61,7 @@ exports.doesUserExist = async (req, res, next) => {
     if (!users) {
       throw new NotFoundError('Запрашиваемые пользователи не найдены.');
     }
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 
@@ -64,7 +73,7 @@ exports.getUserByID = async (req, res, next) => {
     const users = await User.findById(req.params.userId);
 
     res.send(users);
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 };
@@ -80,7 +89,6 @@ exports.getCurrentUser = async (req, res, next) => {
       email: currentUser.email,
       id: currentUser._id,
     });
-
   } catch (err) {
     next(err);
   }
@@ -88,7 +96,7 @@ exports.getCurrentUser = async (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
   try {
-    const {name, about} = req.body;
+    const { name, about } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
@@ -96,8 +104,8 @@ exports.updateUser = async (req, res, next) => {
       {
         new: true,
         runValidators: true,
-        upsert: true
-      });
+      },
+    );
 
     if (!updatedUser) {
       throw new NotFoundError('Запрашиваемые пользователи не найдены.');
@@ -111,16 +119,16 @@ exports.updateUser = async (req, res, next) => {
 
 exports.updateUserAvatar = async (req, res, next) => {
   try {
-    const {avatar} = req.body;
+    const { avatar } = req.body;
 
     const updatedUserAvatar = await User.findByIdAndUpdate(
       req.user._id,
-      {avatar},
+      { avatar },
       {
         new: true,
         runValidators: true,
-        upsert: true
-      });
+      },
+    );
 
     if (!updatedUserAvatar) {
       throw new NotFoundError('Запрашиваемые пользователи не найдены.');

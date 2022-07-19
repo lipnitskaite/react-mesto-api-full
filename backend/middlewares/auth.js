@@ -1,4 +1,3 @@
-
 const { checkToken } = require('../helpers/jwt');
 
 exports.auth = async (req, res, next) => {
