@@ -1,52 +1,16 @@
 require('dotenv').config();
 
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 
-const { createUserValidation, loginUserValidation } = require('./middlewares/validation');
-const { auth } = require('./middlewares/auth');
-const { checkCors } = require('./middlewares/cors');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { errorLogger } = require('./middlewares/logger');
 
 const { routes } = require('./routes/routes');
-
-const { createUser } = require('./controllers/userController');
-const { loginUser } = require('./controllers/loginController');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
-
-app.use(checkCors);
-app.use(cookieParser());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(requestLogger);
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
-app.post('/signup', createUserValidation, createUser);
-app.post('/signin', loginUserValidation, loginUser);
-
-app.use(auth);
-
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt', {
-    maxAge: 3600000 * 24 * 7,
-    httpOnly: true,
-    sameSite: true,
-  })
-    .send({ message: 'Пользователь вышел' });
-});
 
 app.use(routes);
 
