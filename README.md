@@ -4,3 +4,6 @@
   
 Ссылка на сайт:
 https://mesto.front.lipnitskaite.nomoredomains.xyz/#/
+
+Домен сервера:
+https://api.mesto.lipnitskaite.nomoredomains.xyz/#/

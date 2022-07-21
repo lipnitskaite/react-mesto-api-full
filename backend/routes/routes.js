@@ -1,10 +1,5 @@
 const routes = require('express').Router();
 
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-
-const { checkCors } = require('../middlewares/cors');
-const { requestLogger } = require('../middlewares/logger');
 const { createUserValidation, loginUserValidation } = require('../middlewares/validation');
 const { auth } = require('../middlewares/auth');
 
@@ -15,14 +10,6 @@ const { usersRoutes } = require('./usersRoutes');
 const { cardsRoutes } = require('./cardsRoutes');
 
 const NotFoundError = require('../errors/NotFoundError');
-
-routes.use(checkCors);
-routes.use(cookieParser());
-
-routes.use(bodyParser.json());
-routes.use(bodyParser.urlencoded({ extended: true }));
-
-routes.use(requestLogger);
 
 routes.get('/crash-test', () => {
   setTimeout(() => {
@@ -39,6 +26,7 @@ routes.get('/signout', (req, res) => {
   res.clearCookie('jwt', {
     maxAge: 3600000 * 24 * 7,
     httpOnly: true,
+    sameSite: 'none',
   })
     .send({ message: 'Пользователь вышел' });
 });
