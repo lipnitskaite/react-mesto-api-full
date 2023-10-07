@@ -14,7 +14,7 @@ const { errorHandler } = require('./middlewares/errorHandler');
 
 const { routes } = require('./routes/routes');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 8000 } = process.env;
 
 const app = express();
 
@@ -29,7 +29,7 @@ app.use(requestLogger);
 app.use(routes);
 
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/mestodb');
+  await mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console

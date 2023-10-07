@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mesto.lipnitskaite.nomoredomains.xyz';
+export const BASE_URL = `${process.env.REACT_APP_API_URL}`;
 
 const checkResponse = (response) => {
   if (response.ok) {
