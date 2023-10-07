@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    depends_on:
+      - mongodb
+    image: mongo-express
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+
+  backend:
+    container_name: mesto-backend-container
+    image: mesto-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    container_name: mesto-frontend-container
+    image: mesto-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env

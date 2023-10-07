@@ -19,7 +19,7 @@ function App() {
   const history = useHistory();
 
   const api = new Api({
-    address: 'https://api.mesto.lipnitskaite.nomoredomains.xyz',
+    address: `${process.env.REACT_APP_API_URL}`,
     headers: { 'Content-Type': 'application/json' },
     notAuthorizedHandler: () => { history.push('/sign-in'); }
   });
