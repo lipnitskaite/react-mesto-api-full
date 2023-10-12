@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PopupWithForm from '../components/PopupWithForm';
+import PopupWithForm from './PopupWithForm';
         
 function EditProfilePopup({isOpen, onClose, onAddPlace}) {
   const handleClose = () => onClose();
