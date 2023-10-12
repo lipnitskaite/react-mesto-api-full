@@ -1,4 +1,4 @@
-.page {
+.app {
   min-height: 100vh;
   box-sizing: border-box;
   min-width: 320px;
@@ -17,20 +17,20 @@
 }
 
 @media screen and (min-width: 768px) {
-  .page {
+  .app {
     min-width: 768px;
     padding: 45px 0 60px 0;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .page {
+  .app {
     min-width: 1024px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .page {
+  .app {
     min-width: 1280px;
   }
 }
