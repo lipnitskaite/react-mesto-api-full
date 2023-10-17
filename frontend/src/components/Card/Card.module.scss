@@ -1,0 +1,118 @@
+.card {
+  margin-bottom: 20px;
+  width: 282px;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding-bottom: 31px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  } 
+}
+
+.image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  color: black;
+}
+
+.main {
+  margin: 25px 15px 0 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  max-width: 224px;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.21;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.like_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.like_button {
+  background: transparent url(../../images/like-button.svg) no-repeat center;
+  background-size: 22px 19px;
+  border: none;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  margin-bottom: 3px;
+  transition: opacity .4s;
+
+  &_active {
+    background: transparent url(../../images/like-button-active.svg) no-repeat center;
+  }
+
+  &_inactive {
+    background: transparent url(../../images/like-button.svg) no-repeat center;
+  }
+}
+
+.like_number {
+  color: black;
+  font-size: 13px;
+  line-height: 1.21;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.delete_button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent url(../../images/delete-button.svg) no-repeat top right;
+  background-size: 18px 19px;
+  border: none;
+  padding: 0;
+  width: 18px;
+  height: 19px;
+  transition: opacity .4s;
+
+  &_inactive {
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .like_button {
+    &:hover {
+      opacity: .5;
+      cursor: pointer;
+    }
+  }
+
+  .delete_button {
+    &:hover {
+      opacity: .5;
+      cursor: pointer;
+    }
+  }
+}
