@@ -1,6 +1,7 @@
 import React from "react";
-import Card from "./Card/Card";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import Card from "../Card/Card";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import styles from "./Main.module.scss";
 
 function Main({
   onEditAvatar,
@@ -14,37 +15,37 @@ function Main({
   const currentUser = React.useContext(CurrentUserContext);
 
   return (
-    <main className='content'>
-      <section className='profile'>
-        <div className='profile__photo-container'>
+    <main>
+      <section className={styles.profile}>
+        <div className={styles.photo_container}>
           <img
             src={currentUser.avatar}
-            className='profile__photo'
+            className={styles.photo}
             alt='Аватар пользователя'
           />
           <button
-            className='profile__photo-edit-button'
+            className={styles.edit_photo_button}
             type='button'
             onClick={onEditAvatar}
           ></button>
         </div>
-        <div className='profile__main'>
-          <h1 className='profile__title'>{currentUser.name}</h1>
+        <div className={styles.main}>
+          <h1 className={styles.title}>{currentUser.name}</h1>
           <button
-            className='profile__edit-button'
+            className={styles.edit_info_button}
             type='button'
             onClick={onEditProfile}
           ></button>
         </div>
-        <p className='profile__subtitle'>{currentUser.about}</p>
+        <p className={styles.subtitle}>{currentUser.about}</p>
         <button
-          className='profile__add-button'
+          className={styles.add_card_button}
           type='button'
           onClick={onAddCard}
         ></button>
       </section>
 
-      <section className='cards page__cards'>
+      <section className={styles.cards}>
         {cards.map((card) => (
           <Card
             card={card}

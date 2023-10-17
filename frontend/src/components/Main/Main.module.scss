@@ -1,0 +1,209 @@
+.profile {
+  padding: 42px 19px 36px 19px;
+  display: grid;
+  grid-template-columns: fit-content(100vw);
+  align-content: center;
+  justify-content: center;
+}
+
+.photo_container {
+  max-width: 120px;
+  max-height: 120px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+}
+
+.edit_photo_button {
+  padding: 0;
+  border: none;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0;
+  transition: opacity .4s;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    background: url(../../images/edit-avatar-button.svg) no-repeat center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 26px 0 14px 0;
+}
+
+.title {
+  max-width: 189px;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.21;
+  text-align: center;
+  margin: 0 10px 0 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.edit_info_button {
+  background: transparent url(../../images/edit-button.svg) no-repeat center;
+  width: 18px;
+  height: 18px;
+  align-self: end;
+  margin-bottom: 5px;
+  padding: 0;
+  border: none;
+  font-size: 27px;
+  line-height: 1.21;
+  transition: opacity .4s;
+}
+
+.subtitle {
+  max-width: 282px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 36px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.add_card_button {
+  background: black url(../../images/add-button.svg) no-repeat center;
+  background-size: 18px 18px;
+  padding: 0;
+  width: 282px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards {
+  width: calc(100% - (19px*2));
+  margin: 0 auto 48px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  justify-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  .cards {
+    max-width: 80%;
+    grid-gap: 20px 17px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    max-width: 80%;
+    padding: 40px 0 51px 0;
+    margin: 0 auto;
+    grid-template-columns: fit-content(158px) 1fr fit-content(140px);
+    grid-template-areas:
+      "photo main button_add"
+      "photo subtitle button_add";
+    grid-gap: 16px 30px;
+  }
+
+  .photo_container {
+    grid-area: photo;
+  }
+
+  .main {
+    justify-self: flex-start;
+    align-self: flex-end;
+    grid-area: main;
+    margin: 0;
+  }
+
+  .subtitle {
+    max-width: 336px;
+    justify-self: flex-start;
+    grid-area: subtitle;
+    margin: 0;
+  }
+
+  .add_card_button {
+    grid-area: button_add;
+    width: 150px;
+    align-self: center;
+    background-size: 22px 22px;
+  }
+
+  .cards {
+    margin-bottom: 67px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile {
+    max-width: 880px;
+    grid-template-columns: fit-content(168.75px) 1fr fit-content(150px);
+  }
+
+  .cards {
+    max-width: 880px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title {
+    max-width: 294px;
+    font-size: 42px;
+    line-height: 1.14;
+    margin-right: 18px;
+  }
+
+  .edit_info_button {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .6;
+    }
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .add_card_button {
+    transition: opacity .4s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .6;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Login from "../Login";
 import Register from "../Register";
 import Header from "../Header/Header";
-import Main from "../Main";
+import Main from "../Main/Main";
 import Footer from "../Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import InfoTooltip from "../InfoTooltip";
