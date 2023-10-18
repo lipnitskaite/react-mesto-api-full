@@ -4,7 +4,7 @@ import Login from "../Auth/Login/Login";
 import Register from "../Auth/Register/Register";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import InfoTooltip from "../InfoTooltip";
 import EditAvatarPopup from "../EditAvatarPopup";
