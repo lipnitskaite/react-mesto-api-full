@@ -1,0 +1,132 @@
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
+  padding: 0 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .4s, opacity .4s;
+
+  &_opened {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility .4s, opacity .4s;
+  }
+
+  &_info-tooltip {
+    background-color: rgba(0, 0, 0, .9);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.content {
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 22px;
+  position: relative;
+  z-index: 5;
+}
+
+.close {
+  background: transparent url(../../../images/close-icon-mobile.svg) no-repeat center;
+  background-size: 20px 20px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -36px;
+  right: 0;
+}
+
+.form {
+  &_title {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1.21;
+  }
+
+  &_button {
+    width: 100%;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.21;
+    margin-bottom: 17px;
+    border: none;
+    border-radius: 2px;
+    padding: 14px 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    width: 430px;
+    padding: 34px 36px 37px 36px;
+  }
+
+  .close {
+    top: -40px;
+    right: -40px;
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form {
+    &_title {
+      font-size: 24px;
+    }
+
+    &_button {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .close {
+    transition: opacity .4s;
+
+    &:hover {
+      opacity: .6;
+      cursor: pointer;
+    }
+  }
+
+  .form {
+    &_button {
+      transition: opacity .4s;
+  
+      &:hover {
+        opacity: .8;
+        cursor: pointer;
+      }
+    }
+  }
+}

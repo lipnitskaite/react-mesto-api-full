@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import PopupWithForm from './PopupWithForm';
-        
-function EditProfilePopup({isOpen, onClose, onAddPlace}) {
+import React, { useState, useEffect } from "react";
+import ModalWithForm from "./Modals/ModalWithForm/ModalWithForm";
+
+function EditProfilePopup({ isOpen, onClose, onAddPlace }) {
   const handleClose = () => onClose();
 
-  const [cardName, setCardName] = useState('');
-  const [cardPhotoLink, setCardPhotoLink] = useState('');
+  const [cardName, setCardName] = useState("");
+  const [cardPhotoLink, setCardPhotoLink] = useState("");
 
   function handleCardNameChange(e) {
     setCardName(e.target.value);
@@ -15,8 +15,8 @@ function EditProfilePopup({isOpen, onClose, onAddPlace}) {
   }
 
   useEffect(() => {
-    setCardName('');
-    setCardPhotoLink('');
+    setCardName("");
+    setCardPhotoLink("");
   }, [isOpen]);
 
   function handleSubmit(e) {
@@ -29,44 +29,43 @@ function EditProfilePopup({isOpen, onClose, onAddPlace}) {
   }
 
   return (
-    <PopupWithForm
-      name="add-post"
-      title="Новое место"
-      buttonTitle="Создать"
+    <ModalWithForm
+      name='add-post'
+      title='Новое место'
+      buttonTitle='Создать'
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
       children={[
-        <fieldset className="form__container">
-          <input 
-            id="title-input"
-            className="form__input form__input_type_post-title"
-            placeholder="Название"
-            type="text"
-            name="name"
-            value={cardName || ''} 
-            onChange={handleCardNameChange} 
-            required
-            minLength="2"
-            maxLength="30"
-          />
-          <span className="title-input-error form__input-error"></span>
+        <fieldset className='form__container'>
           <input
-            id="image-input"
-            className="form__input form__input_type_post-image"
-            placeholder="Ссылка на картинку"
-            type="url"
-            name="link"
-            value={cardPhotoLink || ''} 
+            id='title-input'
+            className='form__input form__input_type_post-title'
+            placeholder='Название'
+            type='text'
+            name='name'
+            value={cardName || ""}
+            onChange={handleCardNameChange}
+            required
+            minLength='2'
+            maxLength='30'
+          />
+          <span className='title-input-error form__input-error'></span>
+          <input
+            id='image-input'
+            className='form__input form__input_type_post-image'
+            placeholder='Ссылка на картинку'
+            type='url'
+            name='link'
+            value={cardPhotoLink || ""}
             onChange={handleCardPhotoLinkChange}
             required
           />
-          <span className="image-input-error form__input-error"></span>
-        </fieldset>
+          <span className='image-input-error form__input-error'></span>
+        </fieldset>,
       ]}
     />
   );
 }
 
 export default EditProfilePopup;
-        

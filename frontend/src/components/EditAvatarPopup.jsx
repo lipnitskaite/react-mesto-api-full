@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import PopupWithForm from './PopupWithForm';
-        
-function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
+import React, { useEffect } from "react";
+import ModalWithForm from "./Modals/ModalWithForm/ModalWithForm";
+
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const handleClose = () => onClose();
 
   const inputAvatarRef = React.useRef();
@@ -15,34 +15,33 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
   }
 
   useEffect(() => {
-    inputAvatarRef.current.value="";
+    inputAvatarRef.current.value = "";
   }, [isOpen]);
 
   return (
-    <PopupWithForm
-      name="edit-avatar"
-      title="Обновить аватар"
-      buttonTitle="Сохранить"
+    <ModalWithForm
+      name='edit-avatar'
+      title='Обновить аватар'
+      buttonTitle='Сохранить'
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
       children={[
-        <fieldset className="form__container">
-          <input 
-            id="avatar-input"
-            className="form__input form__input_type_avatar"
-            type="url"
-            name="avatar"
-            placeholder="Ссылка на картинку"
+        <fieldset className='form__container'>
+          <input
+            id='avatar-input'
+            className='form__input form__input_type_avatar'
+            type='url'
+            name='avatar'
+            placeholder='Ссылка на картинку'
             ref={inputAvatarRef}
             required
           />
-          <span className="avatar-input-error form__input-error"></span>
-        </fieldset>
+          <span className='avatar-input-error form__input-error'></span>
+        </fieldset>,
       ]}
     />
   );
 }
 
 export default EditAvatarPopup;
-        
