@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ModalWithForm from "./Modals/ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import styles from "./AddCardModal.module.scss";
 
-function EditProfilePopup({ isOpen, onClose, onAddPlace }) {
+function AddCardModal({ isOpen, onClose, onAddPlace }) {
   const handleClose = () => onClose();
 
   const [cardName, setCardName] = useState("");
@@ -37,10 +38,10 @@ function EditProfilePopup({ isOpen, onClose, onAddPlace }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       children={[
-        <fieldset className='form__container'>
+        <fieldset className={styles.container}>
           <input
             id='title-input'
-            className='form__input form__input_type_post-title'
+            className={styles.input}
             placeholder='Название'
             type='text'
             name='name'
@@ -50,10 +51,10 @@ function EditProfilePopup({ isOpen, onClose, onAddPlace }) {
             minLength='2'
             maxLength='30'
           />
-          <span className='title-input-error form__input-error'></span>
+          <span className={styles.error}></span>
           <input
             id='image-input'
-            className='form__input form__input_type_post-image'
+            className={styles.input}
             placeholder='Ссылка на картинку'
             type='url'
             name='link'
@@ -61,11 +62,11 @@ function EditProfilePopup({ isOpen, onClose, onAddPlace }) {
             onChange={handleCardPhotoLinkChange}
             required
           />
-          <span className='image-input-error form__input-error'></span>
+          <span className={styles.error}></span>
         </fieldset>,
       ]}
     />
   );
 }
 
-export default EditProfilePopup;
+export default AddCardModal;

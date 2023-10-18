@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import InfoTooltip from "../InfoTooltip";
 import EditAvatarPopup from "../EditAvatarPopup";
-import AddPlacePopup from "../AddPlacePopup";
+import AddCardModal from "../Modals/AddCardModal/AddCardModal";
 import ImagePopup from "../ImagePopup";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { Api } from "../../utils/api";
@@ -219,7 +219,7 @@ function App() {
           onUpdateAvatar={handleUpdateAvatar}
         />
 
-        <AddPlacePopup
+        <AddCardModal
           isOpen={isAddCardPopupOpen}
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit}
