@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import ModalWithForm from "./Modals/ModalWithForm/ModalWithForm";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
+import styles from "./EditProfileInfoModal.module.scss";
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+function EditProfileInfoModal({ isOpen, onClose, onUpdateUser }) {
   const handleClose = () => onClose();
 
   const currentUser = useContext(CurrentUserContext);
@@ -42,10 +43,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       children={[
-        <fieldset className='form__container'>
+        <fieldset className={styles.container}>
           <input
             id='name-input'
-            className='form__input form__input_type_name'
+            className={styles.input}
             placeholder='Имя'
             type='text'
             name='name'
@@ -55,10 +56,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             minLength='2'
             maxLength='40'
           />
-          <span className='name-input-error form__input-error'></span>
+          <span className={styles.error}></span>
           <input
             id='job-input'
-            className='form__input form__input_type_job'
+            className={styles.input}
             placeholder='Занятие'
             type='text'
             name='about'
@@ -68,11 +69,11 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             minLength='2'
             maxLength='200'
           />
-          <span className='job-input-error form__input-error'></span>
+          <span className={styles.error}></span>
         </fieldset>,
       ]}
     />
   );
 }
 
-export default EditProfilePopup;
+export default EditProfileInfoModal;

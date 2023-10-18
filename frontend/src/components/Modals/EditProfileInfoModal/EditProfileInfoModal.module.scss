@@ -1,0 +1,36 @@
+.container {
+  margin: 62px 0 45px 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+.input {
+  width: 100%;
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  padding: 13px 0;
+  margin-bottom: 17px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21;
+  color: #ff0000;
+  opacity: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin: 41px 0 48px 0;
+  }
+}

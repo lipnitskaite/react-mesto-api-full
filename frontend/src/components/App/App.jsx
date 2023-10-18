@@ -5,7 +5,7 @@ import Register from "../Auth/Register/Register";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import EditProfilePopup from "../EditProfilePopup";
+import EditProfileInfoModal from "../Modals/EditProfileInfoModal/EditProfileInfoModal";
 import InfoTooltip from "../InfoTooltip";
 import EditProfileImageModal from "../Modals/EditProfileImageModal/EditProfileImageModal";
 import AddCardModal from "../Modals/AddCardModal/AddCardModal";
@@ -207,7 +207,7 @@ function App() {
           failMessage={"Что-то пошло не так! Попробуйте ещё раз."}
         />
 
-        <EditProfilePopup
+        <EditProfileInfoModal
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
