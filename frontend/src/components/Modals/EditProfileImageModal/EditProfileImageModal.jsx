@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import ModalWithForm from "./Modals/ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import styles from "./EditProfileImageModal.module.scss";
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+function EditProfileImageModal({ isOpen, onClose, onUpdateAvatar }) {
   const handleClose = () => onClose();
 
   const inputAvatarRef = React.useRef();
@@ -27,21 +28,21 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       children={[
-        <fieldset className='form__container'>
+        <fieldset className={styles.container}>
           <input
             id='avatar-input'
-            className='form__input form__input_type_avatar'
+            className={styles.input}
             type='url'
             name='avatar'
             placeholder='Ссылка на картинку'
             ref={inputAvatarRef}
             required
           />
-          <span className='avatar-input-error form__input-error'></span>
+          <span className={styles.error}></span>
         </fieldset>,
       ]}
     />
   );
 }
 
-export default EditAvatarPopup;
+export default EditProfileImageModal;

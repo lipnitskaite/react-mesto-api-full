@@ -7,7 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import InfoTooltip from "../InfoTooltip";
-import EditAvatarPopup from "../EditAvatarPopup";
+import EditProfileImageModal from "../Modals/EditProfileImageModal/EditProfileImageModal";
 import AddCardModal from "../Modals/AddCardModal/AddCardModal";
 import ImagePopup from "../ImagePopup";
 import { ProtectedRoute } from "../ProtectedRoute";
@@ -213,7 +213,7 @@ function App() {
           onUpdateUser={handleUpdateUser}
         />
 
-        <EditAvatarPopup
+        <EditProfileImageModal
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
