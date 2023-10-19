@@ -32,7 +32,7 @@ function Register({ handleRegister }) {
         noValidate
       >
         <h2 className={styles.title}>Регистрация</h2>
-        <fieldset className={styles.form_container}>
+        <fieldset className={styles.container}>
           <input
             onChange={handleChange}
             value={email}
@@ -43,7 +43,7 @@ function Register({ handleRegister }) {
             placeholder='Email'
             required
           />
-          {/* <span className="login-input-error form__input-error"></span> */}
+          {/* <span className="login-input-error"></span> */}
           <input
             onChange={handleChange}
             value={password}
@@ -54,7 +54,7 @@ function Register({ handleRegister }) {
             placeholder='Пароль'
             required
           />
-          {/* <span className="login-input-error form__input-error"></span> */}
+          {/* <span className="login-input-error"></span> */}
         </fieldset>
         <button
           className={styles.button}
@@ -65,9 +65,9 @@ function Register({ handleRegister }) {
           Зарегистрироваться
         </button>
       </form>
-      <p className={styles.login_tip}>
+      <p className={styles.text}>
         Уже зарегистрированы?{" "}
-        <Link to={`./sign-in`} className={styles.login_link}>
+        <Link to={`./sign-in`} className={styles.link}>
           Войти
         </Link>
       </p>

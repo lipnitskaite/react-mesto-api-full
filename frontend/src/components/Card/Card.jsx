@@ -5,8 +5,8 @@ import styles from "./Card.module.scss";
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser.id;
-  const cardDeleteButtonClassName = `${styles.delete_button} ${
-    !isOwn && styles.delete_button_inactive
+  const cardDeleteButtonClassName = `${styles.deleteButton} ${
+    !isOwn && styles.deleteButton_inactive
   }`;
 
   const isLiked = card.likes.some((like) => like === currentUser.id);
@@ -28,7 +28,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
       />
       <div className={styles.main}>
         <h2 className={styles.title}>{card.name}</h2>
-        <div className={styles.like_container}>
+        <div className={styles.like}>
           <button
             className={cardLikeButtonClassName}
             type='button'

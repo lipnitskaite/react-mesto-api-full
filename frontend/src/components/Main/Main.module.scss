@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.photo_container {
+.photoContainer {
   max-width: 120px;
   max-height: 120px;
   margin: 0 auto;
@@ -20,7 +20,7 @@
   height: 120px;
 }
 
-.edit_photo_button {
+.editPhotoButton {
   padding: 0;
   border: none;
   width: 120px;
@@ -48,7 +48,7 @@
   }
 }
 
-.main {
+.mainInfoContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,7 @@
   overflow: hidden;
 }
 
-.edit_info_button {
+.editInfoButton {
   background: transparent url(../../images/edit-button.svg) no-repeat center;
   width: 18px;
   height: 18px;
@@ -94,7 +94,7 @@
   overflow: hidden;
 }
 
-.add_card_button {
+.addCardButton {
   background: black url(../../images/add-button.svg) no-repeat center;
   background-size: 18px 18px;
   padding: 0;
@@ -134,11 +134,11 @@
     grid-gap: 16px 30px;
   }
 
-  .photo_container {
+  .photoContainer {
     grid-area: photo;
   }
 
-  .main {
+  .mainInfoContainer {
     justify-self: flex-start;
     align-self: flex-end;
     grid-area: main;
@@ -152,7 +152,7 @@
     margin: 0;
   }
 
-  .add_card_button {
+  .addCardButton {
     grid-area: button_add;
     width: 150px;
     align-self: center;
@@ -183,7 +183,7 @@
     margin-right: 18px;
   }
 
-  .edit_info_button {
+  .editInfoButton {
     width: 24px;
     height: 24px;
     margin-bottom: 8px;
@@ -198,7 +198,7 @@
     font-size: 18px;
   }
 
-  .add_card_button {
+  .addCardButton {
     transition: opacity .4s;
 
     &:hover {

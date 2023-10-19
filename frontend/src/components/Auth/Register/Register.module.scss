@@ -25,7 +25,7 @@
   line-height: 1.21;
 }
 
-.form_container {
+.container {
   margin: 27px 0 173px 0;
   padding: 0;
   border: none;
@@ -67,7 +67,7 @@
   padding: 14px 0;
 }
 
-.login_tip {
+.text {
   padding: 0;
   margin: 20px 0 0 0;
   font-weight: 400;
@@ -76,7 +76,7 @@
   line-height: 1.21;
 }
 
-.login_link {
+.link {
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -101,7 +101,7 @@
     font-size: 24px;
   }
 
-  .form_container {
+  .container {
     margin: 37px 0 216px 0;
   }
 
@@ -115,7 +115,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .login_link {
+  .link {
     transition: opacity .4s;
 
     &:hover {

@@ -17,29 +17,29 @@ function Main({
   return (
     <main>
       <section className={styles.profile}>
-        <div className={styles.photo_container}>
+        <div className={styles.photoContainer}>
           <img
             src={currentUser.avatar}
             className={styles.photo}
             alt='Аватар пользователя'
           />
           <button
-            className={styles.edit_photo_button}
+            className={styles.editPhotoButton}
             type='button'
             onClick={onEditAvatar}
           ></button>
         </div>
-        <div className={styles.main}>
+        <div className={styles.mainInfoContainer}>
           <h1 className={styles.title}>{currentUser.name}</h1>
           <button
-            className={styles.edit_info_button}
+            className={styles.editInfoButton}
             type='button'
             onClick={onEditProfile}
           ></button>
         </div>
         <p className={styles.subtitle}>{currentUser.about}</p>
         <button
-          className={styles.add_card_button}
+          className={styles.addCardButton}
           type='button'
           onClick={onAddCard}
         ></button>

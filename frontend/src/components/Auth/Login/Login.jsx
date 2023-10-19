@@ -30,8 +30,8 @@ function Login({ handleLogin }) {
         onSubmit={handleSubmit}
         noValidate
       >
-        <h2 className={styles.form_title}>Вход</h2>
-        <fieldset className={styles.form_container}>
+        <h2 className={styles.title}>Вход</h2>
+        <fieldset className={styles.container}>
           <input
             onChange={handleChange}
             value={email}
@@ -42,7 +42,7 @@ function Login({ handleLogin }) {
             placeholder='Email'
             required
           />
-          {/* <span className="login-input-error form__input-error"></span> */}
+          {/* <span className="login-input-error"></span> */}
           <input
             onChange={handleChange}
             value={password}
@@ -53,7 +53,7 @@ function Login({ handleLogin }) {
             placeholder='Пароль'
             required
           />
-          {/* <span className="login-input-error form__input-error"></span> */}
+          {/* <span className="login-input-error"></span> */}
         </fieldset>
         <button
           className={styles.button}
