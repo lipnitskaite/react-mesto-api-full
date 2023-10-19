@@ -16,7 +16,7 @@ function Header(props) {
               onClick={props.signOut}
               className={`${styles.link} ${styles.link_signout}`}
             >
-              Выйти
+              Sing out
             </button>
           </li>
         </ul>
@@ -24,13 +24,13 @@ function Header(props) {
 
       <Route path='/sign-up'>
         <Link to={`./sign-in`} className={styles.link}>
-          Войти
+          Sign in
         </Link>
       </Route>
 
       <Route path='/sign-in'>
         <Link to={`./sign-up`} className={styles.link}>
-          Регистрация
+          Sign up
         </Link>
       </Route>
     </header>

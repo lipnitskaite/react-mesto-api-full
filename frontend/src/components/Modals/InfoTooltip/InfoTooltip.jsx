@@ -21,7 +21,7 @@ function InfoTooltip({
         ></button>
         <figure className={styles.response}>
           <img
-            alt='Изображение успеха/неудачи операции'
+            alt='Success/failure of the operation'
             src={successResult ? successImage : failImage}
             className={styles.response_image}
           />

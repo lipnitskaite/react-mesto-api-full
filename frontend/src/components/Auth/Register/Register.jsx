@@ -31,7 +31,7 @@ function Register({ handleRegister }) {
         onSubmit={handleSubmit}
         noValidate
       >
-        <h2 className={styles.title}>Регистрация</h2>
+        <h2 className={styles.title}>Create an account</h2>
         <fieldset className={styles.container}>
           <input
             onChange={handleChange}
@@ -51,7 +51,7 @@ function Register({ handleRegister }) {
             className={styles.input}
             type='password'
             name='password'
-            placeholder='Пароль'
+            placeholder='Password'
             required
           />
           {/* <span className="login-input-error"></span> */}
@@ -60,15 +60,15 @@ function Register({ handleRegister }) {
           className={styles.button}
           type='submit'
           name='submit'
-          value='Зарегистрироваться'
+          value='Sign up'
         >
-          Зарегистрироваться
+          Sign up
         </button>
       </form>
       <p className={styles.text}>
-        Уже зарегистрированы?{" "}
+        Already have an account?{" "}
         <Link to={`./sign-in`} className={styles.link}>
-          Войти
+          Sign in
         </Link>
       </p>
     </section>

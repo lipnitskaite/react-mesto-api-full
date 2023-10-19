@@ -13,7 +13,7 @@ const NotFoundError = require('../errors/NotFoundError');
 
 routes.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
+    throw new Error("The server's about to go down");
   }, 0);
 });
 
@@ -28,14 +28,14 @@ routes.get('/signout', (req, res) => {
     httpOnly: true,
     sameSite: 'none',
   })
-    .send({ message: 'Пользователь вышел' });
+    .send({ message: 'The user is logged out' });
 });
 
 routes.use('/users', usersRoutes);
 routes.use('/cards', cardsRoutes);
 
 routes.all('*', (req, res, next) => {
-  throw new NotFoundError('Такой страницы не существует');
+  throw new NotFoundError("This page doesn't exist");
 
   // eslint-disable-next-line no-undef, no-unreachable
   next(err);

@@ -37,8 +37,8 @@ function EditProfileInfoModal({ isOpen, onClose, onUpdateUser }) {
   return (
     <ModalWithForm
       name='edit-profile'
-      title='Редактировать профиль'
-      buttonTitle='Сохранить'
+      title='Edit profile'
+      buttonTitle='Save'
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
@@ -47,7 +47,7 @@ function EditProfileInfoModal({ isOpen, onClose, onUpdateUser }) {
           <input
             id='name-input'
             className={styles.input}
-            placeholder='Имя'
+            placeholder='Name'
             type='text'
             name='name'
             value={name || ""}
@@ -60,7 +60,7 @@ function EditProfileInfoModal({ isOpen, onClose, onUpdateUser }) {
           <input
             id='job-input'
             className={styles.input}
-            placeholder='Занятие'
+            placeholder='Occupation'
             type='text'
             name='about'
             value={description || ""}

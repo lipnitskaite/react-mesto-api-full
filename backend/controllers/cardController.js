@@ -18,7 +18,7 @@ exports.doesCardExist = async (req, res, next) => {
     const cards = await Card.findById(req.params.cardId);
 
     if (!cards) {
-      throw new NotFoundError('Запрашиваемая карточка не найдена.');
+      throw new NotFoundError('Requested card not found.');
     }
   } catch (err) {
     next(err);
@@ -78,9 +78,9 @@ exports.deleteCardByID = async (req, res, next) => {
     if (req.user._id === card.owner.toString()) {
       await Card.findByIdAndDelete(req.params.cardId);
 
-      res.send({ message: 'Карточка удалена' });
+      res.send({ message: 'Card deleted' });
     } else {
-      throw new ForbiddenError('Возможно удаление только своих карточек.');
+      throw new ForbiddenError('Only your own cards can be deleted.');
     }
   } catch (err) {
     next(err);

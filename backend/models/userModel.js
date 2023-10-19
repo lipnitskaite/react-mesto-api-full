@@ -7,22 +7,22 @@ const urlValidation = (v) => regexURL.test(v);
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    minlength: [2, 'Минимальная длина - 2 символа'],
-    maxlength: [30, 'Максимальная длина - 30 символов'],
-    default: 'Жак-Ив Кусто',
+    minlength: [2, 'Minimum length - 2 characters'],
+    maxlength: [30, 'Maximum length - 30 characters'],
+    default: 'Jacques Cousteau',
   },
   about: {
     type: String,
-    minlength: [2, 'Минимальная длина - 2 символа'],
-    maxlength: [30, 'Максимальная длина - 30 символов'],
-    default: 'Исследователь',
+    minlength: [2, 'Minimum length - 2 characters'],
+    maxlength: [30, 'Maximum length - 30 characters'],
+    default: 'Explorer',
   },
   avatar: {
     type: String,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     use: {
       urlValidation,
-      message: () => 'Некорректный формат ссылки',
+      message: () => 'Invalid link format',
     },
   },
   email: {
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: (v) => validator.isEmail(v),
-      message: () => 'Некорректный формат email',
+      message: () => 'Invalid email format',
     },
   },
   password: {

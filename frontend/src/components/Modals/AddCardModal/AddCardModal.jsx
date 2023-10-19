@@ -32,8 +32,8 @@ function AddCardModal({ isOpen, onClose, onAddPlace }) {
   return (
     <ModalWithForm
       name='add-post'
-      title='Новое место'
-      buttonTitle='Создать'
+      title='New place'
+      buttonTitle='Create'
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
@@ -42,7 +42,7 @@ function AddCardModal({ isOpen, onClose, onAddPlace }) {
           <input
             id='title-input'
             className={styles.input}
-            placeholder='Название'
+            placeholder='Name'
             type='text'
             name='name'
             value={cardName || ""}
@@ -55,7 +55,7 @@ function AddCardModal({ isOpen, onClose, onAddPlace }) {
           <input
             id='image-input'
             className={styles.input}
-            placeholder='Ссылка на картинку'
+            placeholder='Image link'
             type='url'
             name='link'
             value={cardPhotoLink || ""}

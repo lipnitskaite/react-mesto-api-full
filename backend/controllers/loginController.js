@@ -12,13 +12,13 @@ exports.loginUser = async (req, res, next) => {
     const foundUser = await User.findOne({ email }).select('+password');
 
     if (!foundUser) {
-      throw new UnauthorizedError('Неправильный email или пароль');
+      throw new UnauthorizedError('Incorrect email or password');
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, foundUser.password);
 
     if (!isPasswordCorrect) {
-      throw new UnauthorizedError('Неправильный email или пароль');
+      throw new UnauthorizedError('Incorrect email or password');
     }
 
     const token = generateToken({ _id: foundUser._id });
@@ -28,8 +28,9 @@ exports.loginUser = async (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
+        secure: true,
       })
-      .send({ message: 'successfully logged in' })
+      .send({ message: 'Successfully signed in' })
       .end();
   } catch (err) {
     next(err);

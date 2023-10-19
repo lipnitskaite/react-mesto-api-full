@@ -203,8 +203,8 @@ function App() {
           isOpen={isInfoTooltipOpen}
           successResult={isRegistrationSuccessful}
           onClose={closeAllPopups}
-          successMessage={"Вы успешно зарегистрировались!"}
-          failMessage={"Что-то пошло не так! Попробуйте ещё раз."}
+          successMessage={"You have successfully signed up!"}
+          failMessage={"Something went wrong! Try again."}
         />
 
         <EditProfileInfoModal

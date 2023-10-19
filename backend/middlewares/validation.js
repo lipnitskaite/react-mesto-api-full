@@ -12,7 +12,7 @@ exports.createUserValidation = celebrate({
     avatar: Joi.string()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.message('Некорректный формат ссылки');
+          return helpers.message('Invalid link format');
         }
         return value;
       }),
@@ -54,7 +54,7 @@ exports.updateUserAvatarValidation = celebrate({
     avatar: Joi.string()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.message('Некорректный формат ссылки');
+          return helpers.message('Invalid link format');
         }
         return value;
       }),
@@ -77,7 +77,7 @@ exports.createCardValidation = celebrate({
       .required()
       .custom((value, helpers) => {
         if (!regexURL.test(value)) {
-          return helpers.message('Некорректный формат ссылки');
+          return helpers.message('Invalid link format');
         }
         return value;
       }),

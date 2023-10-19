@@ -22,8 +22,8 @@ function EditProfileImageModal({ isOpen, onClose, onUpdateAvatar }) {
   return (
     <ModalWithForm
       name='edit-avatar'
-      title='Обновить аватар'
-      buttonTitle='Сохранить'
+      title='Edit profile image'
+      buttonTitle='Save'
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
@@ -34,7 +34,7 @@ function EditProfileImageModal({ isOpen, onClose, onUpdateAvatar }) {
             className={styles.input}
             type='url'
             name='avatar'
-            placeholder='Ссылка на картинку'
+            placeholder='Image link'
             ref={inputAvatarRef}
             required
           />
