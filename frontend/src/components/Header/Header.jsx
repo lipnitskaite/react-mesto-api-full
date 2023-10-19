@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import logo from "../../images/logo-mesto.svg";
+import Logo from "../Logo/Logo";
 import styles from "./Header.module.scss";
 
 function Header(props) {
   return (
     <header className={styles.header}>
-      <img src={logo} alt="Логотип 'Место'" className='logo' />
+      <Logo />
 
       <Route exact path='/'>
         <ul className={styles.nav}>

@@ -1,12 +1,2 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
-
-/* Logo Block */
-@import url(./blocks/logo/logo.css);
-
-/* Form Block */
-@import url(./blocks/form/__input/_type/_post-image/form__input_type_post-image.css);
-@import url(./blocks/form/__input/_type/_error/form__input_type_error.css);
-@import url(./blocks/form/__button/_type/_delete-post/form__button_type_delete-post.css);
-@import url(./blocks/form/__button/_inactive/form__button_inactive.css);
-@import url(./blocks/form/__input-error/_active/form__input-error_active.css);
