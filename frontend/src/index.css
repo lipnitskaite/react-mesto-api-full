@@ -4,17 +4,6 @@
 /* Logo Block */
 @import url(./blocks/logo/logo.css);
 
-/* Popup Block*/
-@import url(./blocks/popup/popup.css);
-@import url(./blocks/popup/__overlay/popup__overlay.css);
-@import url(./blocks/popup/__container/popup__container.css);
-@import url(./blocks/popup/__close/popup__close.css);
-@import url(./blocks/popup/_opened/popup_opened.css);
-@import url(./blocks/popup/_type/_info-tooltip/popup__type_info-tooltip.css);
-@import url(./blocks/popup/__img-response/popup__img-response.css);
-@import url(./blocks/popup/__response/popup__response.css);
-@import url(./blocks/popup/__response-image/popup__response-image.css);
-
 /* Form Block */
 @import url(./blocks/form/__input/_type/_post-image/form__input_type_post-image.css);
 @import url(./blocks/form/__input/_type/_error/form__input_type_error.css);

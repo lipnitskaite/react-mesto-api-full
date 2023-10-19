@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import EditProfileInfoModal from "../Modals/EditProfileInfoModal/EditProfileInfoModal";
-import InfoTooltip from "../InfoTooltip";
+import InfoTooltip from "../Modals/InfoTooltip/InfoTooltip";
 import EditProfileImageModal from "../Modals/EditProfileImageModal/EditProfileImageModal";
 import AddCardModal from "../Modals/AddCardModal/AddCardModal";
 import ImageModal from "../Modals/ImageModal/ImageModal";
