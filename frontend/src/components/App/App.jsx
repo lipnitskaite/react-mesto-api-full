@@ -9,7 +9,7 @@ import EditProfileInfoModal from "../Modals/EditProfileInfoModal/EditProfileInfo
 import InfoTooltip from "../InfoTooltip";
 import EditProfileImageModal from "../Modals/EditProfileImageModal/EditProfileImageModal";
 import AddCardModal from "../Modals/AddCardModal/AddCardModal";
-import ImagePopup from "../ImagePopup";
+import ImageModal from "../Modals/ImageModal/ImageModal";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { Api } from "../../utils/api";
 import * as auth from "../../utils/auth";
@@ -225,7 +225,7 @@ function App() {
           onAddPlace={handleAddPlaceSubmit}
         />
 
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <ImageModal card={selectedCard} onClose={closeAllPopups} />
       </div>
     </CurrentUserContext.Provider>
   );
