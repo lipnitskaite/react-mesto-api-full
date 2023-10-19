@@ -36,7 +36,7 @@ exports.createUser = async (req, res, next) => {
   } catch (err) {
     if (err.code === MONGO_DUPLICATE_ERROR_CODE) {
       // eslint-disable-next-line no-ex-assign
-      err = new DuplicateError('Пользователь с таким email уже зарегистрирован');
+      err = new DuplicateError('A user with this email address has already been registered');
     }
 
     next(err);
@@ -59,7 +59,7 @@ exports.doesUserExist = async (req, res, next) => {
     const users = await User.findById(req.params.userId);
 
     if (!users) {
-      throw new NotFoundError('Запрашиваемые пользователи не найдены.');
+      throw new NotFoundError('Requested users not found.');
     }
   } catch (err) {
     next(err);
@@ -108,7 +108,7 @@ exports.updateUser = async (req, res, next) => {
     );
 
     if (!updatedUser) {
-      throw new NotFoundError('Запрашиваемые пользователи не найдены.');
+      throw new NotFoundError('Requested users not found.');
     }
 
     res.send(updatedUser);
@@ -131,7 +131,7 @@ exports.updateUserAvatar = async (req, res, next) => {
     );
 
     if (!updatedUserAvatar) {
-      throw new NotFoundError('Запрашиваемые пользователи не найдены.');
+      throw new NotFoundError('Requested users not found.');
     }
 
     res.send(updatedUserAvatar);

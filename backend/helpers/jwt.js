@@ -14,7 +14,7 @@ const generateToken = (payload) => jwt.sign(
 
 const checkToken = (token) => {
   if (!token) {
-    throw new UnauthorizedError('Необходима авторизация');
+    throw new UnauthorizedError('Authorisation required');
   }
 
   return jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : SECRET_KEY);

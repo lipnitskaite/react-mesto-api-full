@@ -21,7 +21,7 @@ function Main({
           <img
             src={currentUser.avatar}
             className={styles.photo}
-            alt='Аватар пользователя'
+            alt='User profile'
           />
           <button
             className={styles.editPhotoButton}

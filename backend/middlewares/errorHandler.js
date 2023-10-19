@@ -6,7 +6,7 @@ exports.errorHandler = (err, req, res, next) => {
     .status(statusCode)
     .send({
       message: statusCode === 500
-        ? 'На сервере произошла ошибка'
+        ? 'An error occurred on the server'
         : message,
     });
 };

@@ -7,15 +7,15 @@ const cardSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minlength: [2, 'Минимальная длина - 2 символа'],
-    maxlength: [30, 'Максимальная длина - 30 символов'],
+    minlength: [2, 'Minimum length - 2 characters'],
+    maxlength: [30, 'Maximum length - 30 characters'],
   },
   link: {
     type: String,
     required: true,
     use: {
       urlValidation,
-      message: () => 'Некорректный формат ссылки',
+      message: () => 'Invalid link format',
     },
   },
   owner: {

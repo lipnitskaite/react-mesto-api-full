@@ -30,7 +30,7 @@ function Login({ handleLogin }) {
         onSubmit={handleSubmit}
         noValidate
       >
-        <h2 className={styles.title}>Вход</h2>
+        <h2 className={styles.title}>Sign in to Mesto</h2>
         <fieldset className={styles.container}>
           <input
             onChange={handleChange}
@@ -50,7 +50,7 @@ function Login({ handleLogin }) {
             className={styles.input}
             type='password'
             name='password'
-            placeholder='Пароль'
+            placeholder='Password'
             required
           />
           {/* <span className="login-input-error"></span> */}
@@ -59,9 +59,9 @@ function Login({ handleLogin }) {
           className={styles.button}
           type='submit'
           name='submit'
-          value='Войти'
+          value='Sign in'
         >
-          Войти
+          Sign in
         </button>
       </form>
     </section>
