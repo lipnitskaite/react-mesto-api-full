@@ -5,6 +5,19 @@
   box-sizing: border-box;
 }
 
+.inputContainer {
+  box-sizing: border-box;
+  margin-bottom: 17px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &_error {
+    margin-bottom: 3px;
+  }
+}
+
 .input {
   width: 100%;
   color: black;
@@ -12,7 +25,6 @@
   font-size: 14px;
   line-height: 1.21;
   padding: 13px 0;
-  margin-bottom: 17px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 
@@ -23,8 +35,12 @@
     line-height: 1.21;
   }
 
-  &:last-of-type {
-    margin-bottom: 0;
+  &:focus {
+    outline: none;
+  }
+
+  &_error {
+    border-bottom: 1px solid #ff0000;
   }
 }
 
@@ -33,7 +49,6 @@
   font-size: 12px;
   line-height: 1.21;
   color: #ff0000;
-  opacity: 0;
 }
 
 @media screen and (min-width: 1024px) {
